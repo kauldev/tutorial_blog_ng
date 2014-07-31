@@ -1,12 +1,9 @@
-<html>
-	<head>
-		<title>My django blog</title>
-	</head>
-	<body>
-		{% for post in object_list %}
-		<h1>{{ post.title }}</h1>
-		<h3>{{ post.pub_date }}</h3>
-		{{ post.text }}
-		{% endfor %}
-	</body>
-</html>
+{% extends "blogengine/includes/base.html" %}
+
+    {% block content %}
+        {% for post in object_list %}
+        <h1>{{ post.title }}</h1>
+        <h3>{{ post.pub_date }}</h3>
+        {{ post.text }}
+        {% endfor %}
+    {% endblock %}

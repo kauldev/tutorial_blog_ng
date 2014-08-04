@@ -2,9 +2,14 @@ from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
 from blogengine.models import Post
 import markdown
-from django.contrib.flatpages.models import FlagPage
+from django.contrib.flatpages.models import FlatPage
 from django.contrib.sites.models import Site
 
+
+class BaseAcceptanceTest(LiveServerTestCase):
+	def setUp(self):
+		self.client = Client()
+		
 class PostTest(TestCase):
 	def test_create_post(self):
 		#create the Post
@@ -236,6 +241,37 @@ class PostViewTest(BaseAcceptanceTest):
 
 		self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog post</a>' in response.content)       
 
-class BaseAcceptanceTest(LiveServerTestCase):
-	def setUp(self):
-		self.client = Client()
+class FlatPageViewTest(BaseAcceptanceTest):
+	def test_create_flag_page(self):
+		#create flat page
+		page = FlatPage()
+		page.url = '/about/'
+		page.title ='About me'
+		page.content = 'All about me'
+		page.save()
+
+		#add the site
+		page.sites.add(Site.objects.all()[0])
+		page.save()
+
+		#check new page saved
+		all_pages = FlatPage.objects.all()
+		self.assertEquals(len(all_pages), 1)
+		only_page = all_pages[0]
+		self.assertEquals(only_page,page)
+
+		#check data correct
+		self.assertEquals(only_page.url, '/about/')
+		self.assertEquals(only_page.title, 'About me')
+		self.assertEquals(only_page.content, 'All about me')
+
+		#get url
+		page_url = only_page.get_absolute_url()
+
+		#get the page
+		response = self.client.get(page_url)
+		self.assertEquals(response.status_code, 200)
+
+		#check title and content in response
+		self.assertTrue('About me' in response.content)
+		self.assertTrue('All about me' in response.content)

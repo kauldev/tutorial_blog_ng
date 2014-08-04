@@ -2,6 +2,8 @@ from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
 from blogengine.models import Post
 import markdown
+from django.contrib.flatpages.models import FlagPage
+from django.contrib.sites.models import Site
 
 class PostTest(TestCase):
 	def test_create_post(self):
@@ -33,11 +35,8 @@ class PostTest(TestCase):
   		self.assertEquals(only_post.pub_date.minute, post.pub_date.minute)
   		self.assertEquals(only_post.pub_date.second, post.pub_date.second)
 
-class AdminTest(LiveServerTestCase):
+class AdminTest(BaseAcceptanceTest):
 	fixtures = ['users.json']
-
-	def setUp(self):
-		self.client = Client()
 
 	def test_login(self):
 		#Get login page
@@ -170,9 +169,7 @@ class AdminTest(LiveServerTestCase):
 	    all_posts = Post.objects.all()
 	    self.assertEquals(len(all_posts), 0)
 
-class PostViewTest(LiveServerTestCase):
-	def setUp(self):
-		self.client = Client()
+class PostViewTest(BaseAcceptanceTest):
 
 	def test_index(self):
 		#create the post
@@ -238,3 +235,7 @@ class PostViewTest(LiveServerTestCase):
 		self.assertTrue(str(post.pub_date.day) in response.content)
 
 		self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog post</a>' in response.content)       
+
+class BaseAcceptanceTest(LiveServerTestCase):
+	def setUp(self):
+		self.client = Client()

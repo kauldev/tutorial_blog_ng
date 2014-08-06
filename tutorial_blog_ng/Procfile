@@ -1,0 +1,1 @@
+web: gunicorn tutorial_blog_ng.tutorial_blog_ng.wsgi  --log-file -

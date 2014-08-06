@@ -1,0 +1,237 @@
+doskey /history >> commands.log
+ls
+cd 
+ls
+cd python
+ls
+cd /work
+cd /worksp
+ccd ..
+cd ..
+cd workspace/
+ls
+cd python
+ls
+cd tutorial_blog_ng
+ls
+python manage.py startapp blogengine
+ls
+python manage.py schemamigration --intial blogengine
+python manage.py schemamigration --initial blogengine
+python manage.py migrate
+ls
+git add tutorial_blog_ng/settings.py blogengine
+git commit -m "added blogengine app skeleton'
+python manage.py test
+cd ..
+ls
+workon venv
+cd tutorial_blog_ng
+ls
+python manage.py test
+git commit -m "added blogengine app skeleton'
+python manage.py test
+python manage.py schemamigration  --auto blogengine
+python manage.py migrate
+python manage.py test
+git add blogengine/
+git commit -m "added post model with passing test"
+python manage.py test
+python manage.py createsuperuser
+ls
+mkdir blogengine/fixtures
+cd blogengine
+ls
+mkdir fixtures
+cd ..
+ls
+python manage.py dumpdata auth.User --indent=2 > ./blogengine/fixtures/users.json
+python manage.py test
+ls
+doskey /history > commands.log
+ls
+python manage.py test
+git add blogengine/
+git commit -m "Added tests for admin auth"
+python manage.py test
+git add blogengine/
+git commit -m "refactored admin test"
+python manage.py test
+git add blogengine/
+python manage.py test
+git add blogengine/
+git commit -m "post admin tests in place"
+doskey /history >> commands.log
+cd tutorial_blog_ng
+ls
+python manage.py startapp blogengine
+ls
+python manage.py schemamigration --intial blogengine
+python manage.py schemamigration --initial blogengine
+python manage.py migrate
+ls
+git add tutorial_blog_ng/settings.py blogengine
+git commit -m "added blogengine app skeleton'
+python manage.py test
+cd ..
+ls
+workon venv
+cd tutorial_blog_ng
+ls
+python manage.py test
+git commit -m "added blogengine app skeleton'
+python manage.py test
+python manage.py schemamigration  --auto blogengine
+python manage.py migrate
+python manage.py test
+git add blogengine/
+git commit -m "added post model with passing test"
+python manage.py test
+python manage.py createsuperuser
+ls
+mkdir blogengine/fixtures
+cd blogengine
+ls
+mkdir fixtures
+cd ..
+ls
+python manage.py dumpdata auth.User --indent=2 > ./blogengine/fixtures/users.json
+python manage.py test
+ls
+cd ..
+ls
+python manage.py test
+ls
+cd ..
+ls
+git add requirements.txt
+cd tutorial_blog_ng
+ls
+git add templates/ blogengine
+git commit -m "Added markdown support"
+cd ..
+ls
+cd tutorial_blog_ng
+ls
+python manage.py test
+ls
+git add blogengine/ tutorial_blog_ng/ templates/
+git commit -m "implemented pagination"
+python manage.py test
+python manage.py schemamigration --auto blogengine
+python manage.py migrate
+python manage.py test
+ls
+git add blogengine/ templates/
+git commit -m "implemented post pages"
+doskey /history >> commands.log
+ls
+git add templates/
+git commit - "now user bootstrap and html5 boilerplate for templates"
+git add templates/
+git commit -m "now user bootstrap and html5 boilerplate for templates"
+ls
+pip install markdown
+cd ..
+ls
+pip freeze > requirements.txt
+ls
+cd tutorial_blog_ng
+ls
+cd blogengine
+ls
+mkdir templatetags
+ls
+cd templatetags
+ls
+touch __init__.py
+touch custom_markdown.py
+cd ..
+ls
+cd ..
+ls
+python manage.py test
+ls
+cd ..
+ls
+git add requirements.txt
+cd tutorial_blog_ng
+ls
+git add templates/ blogengine
+git commit -m "Added markdown support"
+cd ..
+ls
+cd tutorial_blog_ng
+ls
+python manage.py test
+ls
+git add blogengine/ tutorial_blog_ng/ templates/
+git commit -m "implemented pagination"
+python manage.py test
+python manage.py schemamigration --auto blogengine
+python manage.py migrate
+python manage.py test
+ls
+git add blogengine/ templates/
+git commit -m "implemented post pages"
+doskey /history >> commands.log
+python manage.py syncdb
+python manage.py migrate
+python manage.py shell
+python manage.py sqlall sites
+doskey /history >> commands.log
+ls
+pip install markdown
+cd ..
+ls
+pip freeze > requirements.txt
+ls
+cd tutorial_blog_ng
+ls
+cd blogengine
+ls
+mkdir templatetags
+ls
+cd templatetags
+ls
+touch __init__.py
+touch custom_markdown.py
+cd ..
+ls
+cd /workspace
+ls
+cd python
+ls
+cd tutorial_blog_ng
+ls
+cd tutorial_blog_ng
+ls
+git add blogengine/ tutorial_blog_ng/
+git commit -m "Added flatpages to installed apps"
+python manage.py test
+git add templates/ tutorial_blog_ng/ blogengine/
+git commit -m "implemented flag page support"
+python manage.py test
+python manage.py schemamigration --auto blogengine
+python manage.py migrate
+python manage.py test
+git add blogengine/
+git commit -m 'added author field'
+git commit -m "added author field"
+python manage.py test
+python manage.py schemamigration --auto blogengine
+python manage.py migrate
+python manage.py test
+ls
+git add blogenginer/ templates/
+ls
+git add blogengine/ templates/
+git commit -m "implementd facebook comments"
+python manage.py test
+python manage.py schemamigration --auto blogengine
+python manage.py migrate
+python manage.py test
+git add blogengine
+gi commit -m "implemented categories"
+git commit -m "implemented categories"
+doskey /history >> commands.log

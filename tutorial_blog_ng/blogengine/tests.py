@@ -19,6 +19,7 @@ class PostTest(TestCase):
         #add attributes
         category.name = 'python'
         category.description = 'The Python programming language'
+        category.slug = 'python'
 
         #save it
         category.save()
@@ -32,6 +33,7 @@ class PostTest(TestCase):
         #check attributes
         self.assertEquals(only_category.name, 'python')
         self.assertEquals(only_category.description, 'The Python programming language')
+        self.assertEquals(only_category.slug, 'python')
 
     def test_create_tag(self):
         # Create the tag
@@ -40,6 +42,7 @@ class PostTest(TestCase):
         # Add attributes
         tag.name = 'python'
         tag.description = 'The Python programming language'
+        tag.slug = 'python'
 
         # Save it
         tag.save()
@@ -53,7 +56,8 @@ class PostTest(TestCase):
         # Check attributes
         self.assertEquals(only_tag.name, 'python')
         self.assertEquals(only_tag.description, 'The Python programming language')
-
+        self.assertEquals(only_tag.slug, 'python')
+        
     def test_create_post(self):
         #create the category
         category = Category()
@@ -728,6 +732,17 @@ class PostViewTest(BaseAcceptanceTest):
         # Check the link is marked up properly
         self.assertTrue('<a href="http://127.0.0.1:8000/">my first blog post</a>' in response.content)
 
+    def test_nonexistent_category_page(self):
+        category_url = '/category/blah/'
+        response = self.client.get(category_url)
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue('No posts found' in response.content)
+
+    def test_nonexistent_tag_page(self):
+        tag_url = '/tag/blah/'
+        response = self.client.get(tag_url)
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue('No posts found' in response.content)
 
 class FlatPageViewTest(BaseAcceptanceTest):
     def test_create_flag_page(self):
